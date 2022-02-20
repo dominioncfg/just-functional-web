@@ -32,7 +32,7 @@ When testing the endpoints manually you need to make sure that the URL are prope
 
 #### Validation Endpoint
 
-- Here is an example of calling the validation endpoint for the expression **3+2"**:
+- Here is an example of calling the validation endpoint for the expression **3+2**:
 
 <https://localhost:5698/api/v2/math/validate?Expression=3%2B2>
 
@@ -42,7 +42,7 @@ You should get something like this:
 {"success":true,"errors":[]}
 ```
 
-- Here is an example of calling the validation endpoint for the expression **X+2"**:
+- Here is an example of calling the validation endpoint for the expression **X+2**:
 
 <https://localhost:5698/api/v2/math/validate?Expression=X%2B2&Variables=X>
 
@@ -54,7 +54,7 @@ You should get something like this:
 
 #### Evaluation Endpoint
 
-- Here is an example of calling the evaluation endpoint for the expression **3+2"**:
+- Here is an example of calling the evaluation endpoint for the expression **3+2**:
 
 <https://localhost:5698/api/v2/math/evaluate?Expression=3%20%2B2>
 
@@ -64,7 +64,7 @@ You should get something like this:
 {"result":5}
 ```
 
-- Here is an example of calling the evaluation endpoint for the expression **X+2"**:
+- Here is an example of calling the evaluation endpoint for the expression **X+2**:
 
 <https://localhost:5698/api/v2/math/evaluate?Expression=X%20%2B2&Variables[X]=3>
 
@@ -73,6 +73,8 @@ You should get something like this:
 ```json
 {"result":5}
 ```
+
+Its worth noticing that for both endpoints, the Variables parameter is optional.
 
 ## Interesting Files
 

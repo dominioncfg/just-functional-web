@@ -11,7 +11,7 @@ namespace JustFunctional.Api.Configuration
         private static string ErrorXmlContentType => "application/problem+xml";
 
 
-        public static IServiceCollection ConfigureProblemDetails(this IServiceCollection services)
+        public static IServiceCollection AddCustomProblemDetails(this IServiceCollection services)
         {
             services.Configure<ApiBehaviorOptions>(options =>
             {

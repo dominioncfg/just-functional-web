@@ -8,23 +8,22 @@ namespace JustFunctional.Api
         {
             services
                 .AddJustFunctional()
-                .AddEndpointsApiExplorer()
-                .AddSwaggerGen()
-                .ConfigureProblemDetails()
+                .AddCustomProblemDetails()
+                .AddCustomSwagger()
+                
                 .AddControllers();
         }
 
         public void Configure(IApplicationBuilder app)
         {
-            app.UseCustomProblemDetails();
-            app.UseSwagger();
-            app.UseSwaggerUI();
-
-            app.UseRouting();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapDefaultControllerRoute();
-            });
+            app
+                .UseCustomProblemDetails()
+                .UseCustomSwagger()
+                .UseRouting()
+                .UseEndpoints(endpoints =>
+                {
+                    endpoints.MapDefaultControllerRoute();
+                });
         }
     }
 }
