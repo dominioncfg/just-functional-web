@@ -28,8 +28,5 @@ namespace JustFunctional.Api.FunctionalTests.Seedwork
             responseModel.Should().NotBeNull();
         }    
         #endregion
-
-
-   
     }
 }
