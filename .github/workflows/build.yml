@@ -14,6 +14,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
+    - name: Docker login
+      uses: docker/login-action@v1.13.0
+      with:
+        ecr: false
+        username: ${{ secrets.DOCKER_USER }}
+        password: ${{ secrets.DOCKER_PASS }}
+    
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
@@ -26,14 +33,8 @@ jobs:
       run: dotnet build --no-restore --configuration Release
     
     - name: .NET run tests
-      run: dotnet test --no-build --verbosity normal --configuration Release
-      
-    - name: Docker login
-      uses: docker/login-action@v1.13.0
-      with:
-        username: ${{ secrets.DOCKER_USER }}
-        password: ${{ secrets.DOCKER_PASS }}
-      
+      run: dotnet test --no-build --verbosity normal --configuration Release        
+     
     - name: Build and push docker image
       uses: docker/build-push-action@v2.9.0
       with:
