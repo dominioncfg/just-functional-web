@@ -25,5 +25,12 @@ jobs:
     - name: .NET Build
       run: dotnet build --no-restore --configuration Release
     
-    - name: :NET Run Tests
+    - name: .NET Run Tests
       run: dotnet test --no-build --verbosity normal --configuration Release
+      
+    - name: Build Docker Image
+      uses: docker/build-push-action@v2.9.0
+      with:
+        file: /src/JustFunctional.Api/Dockerfile
+        tags: just-functional
+        push: false
