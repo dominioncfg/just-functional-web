@@ -1,4 +1,4 @@
-name: .NET
+name: Build And Publish
 
 on:
   push:
@@ -19,11 +19,11 @@ jobs:
       with:
         dotnet-version: 6.0.x
     
-    - name: Restore Dependencies
+    - name: .NET Restore Dependencies
       run: dotnet restore
       
-    - name: Build
+    - name: .NET Build
       run: dotnet build --no-restore --configuration Release
     
-    - name: Test
+    - name: :NET Run Tests
       run: dotnet test --no-build --verbosity normal --configuration Release
