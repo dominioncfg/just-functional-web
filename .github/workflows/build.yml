@@ -19,18 +19,24 @@ jobs:
       with:
         dotnet-version: 6.0.x
     
-    - name: .NET Restore Dependencies
+    - name: .NET restore dependencies
       run: dotnet restore
       
-    - name: .NET Build
+    - name: .NET build
       run: dotnet build --no-restore --configuration Release
     
-    - name: .NET Run Tests
+    - name: .NET run tests
       run: dotnet test --no-build --verbosity normal --configuration Release
       
-    - name: Build Docker Image
+    - name: Docker login
+      uses: docker/login-action@v1.13.0
+      with:
+        username: ${{ secrets.DOCKER_USER }}
+        password: ${{ secrets.DOCKER_PASS }}
+      
+    - name: Build and push docker image
       uses: docker/build-push-action@v2.9.0
       with:
         file: /src/JustFunctional.Api/Dockerfile
-        tags: just-functional
-        push: false
+        tags: ${{ secrets.DOCKER_USER }}/just-functional:2.0.1 ${{ secrets.DOCKER_USER }}/just-functional:latest
+        push: true
