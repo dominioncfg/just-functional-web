@@ -19,7 +19,7 @@ jobs:
     - uses: actions/checkout@v2    
    
     - name: Test
-      run: echo "hola ${{ github.ref_name}}"
+      run: echo "hola ${{ github.ref}}"
     
     
    
