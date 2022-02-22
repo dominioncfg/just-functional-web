@@ -44,4 +44,4 @@ jobs:
       with:
         file: /src/JustFunctional.Api/Dockerfile
         tags: ${{ secrets.DOCKER_USER }}/just-functional:${{env.JustFunctionalDockerImageVersion}},${{ secrets.DOCKER_USER }}/just-functional:latest
-        push: ${{ env.GITHUB_REF_NAME == 'main' }}
+        push: ${{ github.ref_name == 'main' }}
