@@ -16,32 +16,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v2    
+   
+    - name: Test
+      run: echo  ${{ env.GITHUB_REF_NAME}}
     
-    - name: Docker login
-      uses: docker/login-action@v1.13.0
-      with:
-        ecr: false
-        username: ${{ secrets.DOCKER_USER }}
-        password: ${{ secrets.DOCKER_PASS }}
     
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 6.0.x
-    
-    - name: .NET restore dependencies
-      run: dotnet restore
-      
-    - name: .NET build
-      run: dotnet build --no-restore --configuration Release
-    
-    - name: .NET run tests
-      run: dotnet test --no-build --verbosity normal --configuration Release        
-     
-    - name: Build and push docker image
-      uses: docker/build-push-action@v2.9.0
-      with:
-        file: /src/JustFunctional.Api/Dockerfile
-        tags: ${{ secrets.DOCKER_USER }}/just-functional:${{env.JustFunctionalDockerImageVersion}},${{ secrets.DOCKER_USER }}/just-functional:latest
-        push: ${{ env.GITHUB_REF_NAME == 'main' }}
+   
