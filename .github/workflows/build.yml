@@ -5,6 +5,9 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+    
+env:
+  Version: "2.0.1"
 
 jobs:
   build:
@@ -39,5 +42,5 @@ jobs:
       uses: docker/build-push-action@v2.9.0
       with:
         file: /src/JustFunctional.Api/Dockerfile
-        tags: ${{ secrets.DOCKER_USER }}/just-functional:2.0.1,${{ secrets.DOCKER_USER }}/just-functional:latest
-        push: true
+        tags: ${{ secrets.DOCKER_USER }}/just-functional:$Version,${{ secrets.DOCKER_USER }}/just-functional:latest
+        push: ${{ env.GITHUB_REF_NAME == 'main' }}
