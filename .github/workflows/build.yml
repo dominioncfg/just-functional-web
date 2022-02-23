@@ -7,6 +7,7 @@ on:
     branches: [ main ]
     
 env:
+  RepositoryName: "just-functional-api"
   #To do, this can be pulled from the .csproj?
   JustFunctionalDockerImageVersion: "2.0.1"
 
@@ -43,5 +44,5 @@ jobs:
       uses: docker/build-push-action@v2.9.0
       with:
         file: /src/JustFunctional.Api/Dockerfile
-        tags: ${{ secrets.DOCKER_USER }}/just-functional:${{env.JustFunctionalDockerImageVersion}},${{ secrets.DOCKER_USER }}/just-functional:latest
+        tags: ${{ secrets.DOCKER_USER }}/${{env.RepositoryName}}:${{env.JustFunctionalDockerImageVersion}},${{ secrets.DOCKER_USER }}/${{env.RepositoryName}}:latest
         push: ${{ github.ref_name == 'main' }}
