@@ -2,9 +2,19 @@
 
 Just functional web is a reference application for [Just Functional](https://dominioncfg.github.io/just-functional-read-the-docs/).
 
-## Getting Started
+For trying out this app you have two options, you can either use docker or download the repo and use dotnet sdk to run it.
 
-For trying out this app you need to download the repo and use dotnet sdk to run it.
+## Run with docker
+
+You can use the following script to create a docker container from the image:
+
+```bash
+docker run -dt --name my-evaluator -p 5698:80 josecdom94/just-functional-api:2.0.1
+```
+
+If everything went well swagger should be now listening at <https://localhost:5698/swagger>
+
+## Download and run the app
 
 ### Clone the repository
 
@@ -18,9 +28,13 @@ git clone https://github.com/dominioncfg/just-functional-web.git
 dotnet run --project ./src/JustFunctional.Api --urls=https://localhost:5698/
 ```
 
+If everything went well swagger should be now listening at <https://localhost:5698/swagger>
+
+## Using the application
+
 ### Use swagger to test the application
 
-If everything went well swagger should be now listening at <https://localhost:5698/swagger>
+From now on we assume you have an instace of the application running at <https://localhost:5698/> and if you go to <https://localhost:5698/swagger> you sould have a swagger interface to test the application.
 
 - From there you can test the validation endpoint.
 
@@ -83,3 +97,7 @@ If you want to know how Just Functional is used you should check this files:
 [Controller.cs](/src/JustFunctional.Api/Features/Math/Controller.cs)
 
 [JustFunctionalConfigurationExtensions.cs](/src/JustFunctional.Api/Configuration/JustFunctional/JustFunctionalConfigurationExtensions.cs)
+
+## Build Status
+
+[![Build And Publish](https://github.com/dominioncfg/just-functional-web/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/dominioncfg/just-functional-web/actions/workflows/build.yml)
