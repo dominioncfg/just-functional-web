@@ -42,7 +42,7 @@ From now on we assume you have an instace of the application running at <https:/
 
 ### Test endpoints manually
 
-When testing the endpoints manually you need to make sure that the URL are properly encoded, if you use the browser it should doit by default, but that is something to keep in mind you make request using other tools like C#.
+When testing the endpoints manually you need to make sure that the URL are properly encoded, if you use the browser it should do it by default, but that is something to keep in mind you make request using other tools like C#.
 
 #### Validation Endpoint
 
