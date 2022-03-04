@@ -9,10 +9,10 @@ For trying out this app you have two options, you can either use docker or downl
 You can use the following script to create a docker container from the image:
 
 ```bash
-docker run -dt --name my-evaluator -p 5698:80 josecdom94/just-functional-api:2.0.1
+docker run -dt --name my-evaluator -p 5698:80 josecdom94/just-functional-api:2.0.2
 ```
 
-If everything went well swagger should be now listening at <https://localhost:5698/swagger>
+If everything went well swagger should be now listening at <http://localhost:5698/swagger>
 
 ## Download and run the app
 
@@ -25,16 +25,16 @@ git clone https://github.com/dominioncfg/just-functional-web.git
 ### Run the Application
 
 ```bash
-dotnet run --project ./src/JustFunctional.Api --urls=https://localhost:5698/
+dotnet run --project ./src/JustFunctional.Api --urls=http://localhost:5698/
 ```
 
-If everything went well swagger should be now listening at <https://localhost:5698/swagger>
+If everything went well swagger should be now listening at <http://localhost:5698/swagger>
 
 ## Using the application
 
 ### Use swagger to test the application
 
-From now on we assume you have an instace of the application running at <https://localhost:5698/> and if you go to <https://localhost:5698/swagger> you sould have a swagger interface to test the application.
+From now on we assume you have an instace of the application running at <http://localhost:5698/> and if you go to <http://localhost:5698/swagger> you sould have a swagger interface to test the application.
 
 - From there you can test the validation endpoint.
 
@@ -48,7 +48,7 @@ When testing the endpoints manually you need to make sure that the URL are prope
 
 - Here is an example of calling the validation endpoint for the expression **3+2**:
 
-<https://localhost:5698/api/v2/math/validate?Expression=3%2B2>
+<http://localhost:5698/api/v2/math/validate?Expression=3%2B2>
 
 You should get something like this:
 
@@ -58,7 +58,7 @@ You should get something like this:
 
 - Here is an example of calling the validation endpoint for the expression **X+2**:
 
-<https://localhost:5698/api/v2/math/validate?Expression=X%2B2&Variables=X>
+<http://localhost:5698/api/v2/math/validate?Expression=X%2B2&Variables=X>
 
 You should get something like this:
 
@@ -66,11 +66,19 @@ You should get something like this:
 {"success":true,"errors":[]}
 ```
 
+- Here is an example of calling the validation endpoint for the expression **X+Y**:
+
+```json
+{"success":true,"errors":[]}
+```
+
+<http://localhost:5698/api/v2/math/validate?Expression=X%2BY&Variables=X&Variables=Y>
+
 #### Evaluation Endpoint
 
 - Here is an example of calling the evaluation endpoint for the expression **3+2**:
 
-<https://localhost:5698/api/v2/math/evaluate?Expression=3%20%2B2>
+<http://localhost:5698/api/v2/math/evaluate?Expression=3%20%2B2>
 
 You should get something like this:
 
@@ -80,7 +88,17 @@ You should get something like this:
 
 - Here is an example of calling the evaluation endpoint for the expression **X+2**:
 
-<https://localhost:5698/api/v2/math/evaluate?Expression=X%20%2B2&Variables[X]=3>
+<http://localhost:5698/api/v2/math/evaluate?Expression=X%20%2B2&Variables[X]=3>
+
+You should get something like this:
+
+```json
+{"result":5}
+```
+
+- Here is an example of calling the evaluation endpoint for the expression **X+Y**:
+
+<http://localhost:5698/api/v2/math/evaluate?Expression=X%20%2BY&Variables[X]=3&Variables[Y]=2>
 
 You should get something like this:
 

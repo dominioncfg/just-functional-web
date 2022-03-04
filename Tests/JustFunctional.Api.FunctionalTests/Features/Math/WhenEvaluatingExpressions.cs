@@ -52,7 +52,14 @@ namespace JustFunctional.Api.FunctionalTests.Features.Math
             apiResult.Should().NotBeNull();
             apiResult.Result.Should().Be(11);
         }
-        
+
+        [Fact]
+        public async Task EvaluationReturnsBadRequestWhenExpressionIsEmpty()
+        {
+            const string fx = "";
+            await GetAndExpectBadRequestAsync(fx);
+        }
+
         [Fact]
         public async Task EvaluationReturnsBadRequestWhenExpressionIsInvalidSyntaxError()
         {

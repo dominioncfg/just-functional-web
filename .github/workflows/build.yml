@@ -9,7 +9,7 @@ on:
 env:
   RepositoryName: "just-functional-api"
   #To do, this can be pulled from the .csproj?
-  JustFunctionalDockerImageVersion: "2.0.1"
+  JustFunctionalDockerImageVersion: "2.0.2"
 
 jobs:
   build:

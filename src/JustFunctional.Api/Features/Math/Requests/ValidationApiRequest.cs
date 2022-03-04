@@ -8,7 +8,7 @@
         /// <summary>
         /// The expression to validate.
         /// </summary>
-        public string Expression { get; init; } = string.Empty;
+        public string? Expression { get; init; } = string.Empty;
 
 
         /// <summary>
