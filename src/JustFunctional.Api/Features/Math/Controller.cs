@@ -27,7 +27,7 @@ namespace JustFunctional.Api.Features.Math
         public ValidationApiResponse Validate([FromQuery] ValidationApiRequest request)
         {
             var allowedVariables = new PredefinedVariablesProvider(request.Variables ?? Array.Empty<string>());
-            var result = _functionFactory.TryCreate(request.Expression, allowedVariables);
+            var result = _functionFactory.TryCreate(request.Expression ?? string.Empty, allowedVariables);
 
             return new ValidationApiResponse()
             {

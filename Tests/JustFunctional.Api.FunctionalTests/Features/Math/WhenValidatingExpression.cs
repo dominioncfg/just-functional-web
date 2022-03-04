@@ -56,6 +56,20 @@ namespace JustFunctional.Api.FunctionalTests.Features.Math
         }
 
         [Fact]
+        public async Task ValidationReturnsFalseWhenExpressionIsEmpty()
+        {
+            const string fx = "";
+
+            var apiResult = await GetAndValidateExpression(fx);
+
+            apiResult.Should().NotBeNull();
+            apiResult.Success.Should().BeFalse();
+            apiResult.Errors.Should().NotBeEmpty();
+            foreach (var error in apiResult.Errors)
+                error.Should().NotBeEmpty();
+        }
+
+        [Fact]
         public async Task ValidationReturnsFalseWhenExpressionIsInvalidSyntaxError()
         {
             const string fx = "(3+2";
