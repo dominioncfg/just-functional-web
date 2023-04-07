@@ -10,16 +10,17 @@ namespace JustFunctional.Api
                 .AddJustFunctional()
                 .AddCustomProblemDetails()
                 .AddCustomSwagger()
-                
+                .AddCustomCors()
                 .AddControllers();
         }
 
         public void Configure(IApplicationBuilder app)
         {
-            app
+            app                
                 .UseCustomProblemDetails()
                 .UseCustomSwagger()
                 .UseRouting()
+                .UseCustomCors()
                 .UseEndpoints(endpoints =>
                 {
                     endpoints.MapDefaultControllerRoute();
